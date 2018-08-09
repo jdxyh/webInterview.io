@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * js回文算法
+			 * 
+			 * 目标：对比两个字符串在 忽略标点符号，大小写和空格，正着读和反着读是否一模一样
+			 * 
+			 * 思路：1 删除字符串中的多余标点和空格：String.prototype.replace()
+			 * 	 	2 回味对比，需要一个反转的字符串，将反转的字符串和原来的字符串对比
+			 * 		3 注意：对比需要忽略大小写。
+			 */
+
+			function palindrome(str){
+				//将原数组做去标点，空格，大小写处理
+				var str1 = str.replace(/[^0-9a-z]/gi, "");
+				str1.toLowerCase();
+				//反转字符串
+				var str2 = str1.split("").reverse().join("");
+				//进行对比判断
+				if(str1 === str2){
+					return true;
+				}
+				else{
+					return false;
+				}
+				//上面排除反转后一样的如：e ee eee（也是回文）,反转后不一样的如：too ott,剩下的就都是回文了。
+				return true;
+			}
+			
+			console.log(palindrome("eye"));
+			console.log(palindrome("race car"));
+		</script>
+	</body>
+</html>
